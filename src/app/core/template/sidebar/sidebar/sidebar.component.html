@@ -1,0 +1,23 @@
+<mat-drawer-container class="app-container" autosize>
+
+    <button type="button" mat-button (click)="drawer.toggle()">
+        Sidenav
+    </button>
+
+    <mat-drawer #drawer class="app-sidenav" mode="side">
+
+        <p>sidenav works!</p>
+
+        <div>
+            <button routerLink="">{{ 'APP.SIDEBAR.TITLES.HOME' | translate }}</button>
+        </div>
+        <div>
+            <button routerLink="not-my-home">{{ 'APP.SIDEBAR.TITLES.NOT_MY_HOME' | translate }}</button>
+        </div>
+    </mat-drawer>
+
+    <div class="app-sidenav-content">
+        <router-outlet></router-outlet>
+    </div>
+
+</mat-drawer-container>

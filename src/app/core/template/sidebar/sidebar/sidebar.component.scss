@@ -1,0 +1,16 @@
+.app-sidenav {
+    padding: 20px;
+}
+
+.app-container {
+    height: calc(100% - 100px);
+    border: 1px solid rgba(0, 0, 0, 1);
+    background-color: grey;
+}
+
+.app-sidenav-content {
+    display: flex;
+    height: calc(100% - 100px);
+    align-items: center;
+    justify-content: center;
+}

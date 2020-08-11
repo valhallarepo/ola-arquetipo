@@ -1,0 +1,18 @@
+{
+  "APP": {
+    "SIDEBAR": {
+      "TITLES": {
+        "HOME": "Página Inicial",
+        "NOT_MY_HOME": "Não é a Página Inicial"
+      }
+    },
+    "PAGES": {
+      "HOME": {
+        "TITLE": "Esta é a Página Inicial!"
+      },
+      "NOT_MY_HOME": {
+        "TITLE": "Esta não é a Página Inicial!"
+      }
+    }
+  }
+}
