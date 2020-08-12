@@ -1,0 +1,16 @@
+<app-header [sidenavRef]="sidenav"></app-header>
+
+<mat-sidenav-container class="sidenav-container">
+
+    <mat-sidenav #sidenav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
+        class="sidenav">
+        <div class="sidenav-title">
+            <span>Acesse aqui as opções do Portal!</span>
+        </div>
+        <app-sidenav-list></app-sidenav-list>
+    </mat-sidenav>
+
+    <router-outlet></router-outlet>
+</mat-sidenav-container>
+
+<app-footer></app-footer>

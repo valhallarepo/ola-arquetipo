@@ -1,29 +1,31 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { MatSidenavModule } from '@angular/material/sidenav';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './core/template/header/header/header.component';
+import { FooterComponent } from './core/template/footer/footer.component';
+import { HeaderComponent } from './core/template/header/header.component';
+import { SidenavListComponent } from './core/template/sidenav/components/sidenav-list/sidenav-list.component';
+import { SidenavComponent } from './core/template/sidenav/sidenav.component';
 import { httpLoaderFactory } from './shared/http-loader-factory';
+import { MaterialModule } from './shared/material.module';
 import { SharedModule } from './shared/shared.module';
-import { SidebarComponent } from './core/template/sidebar/sidebar/sidebar.component';
-import { FooterComponent } from './core/template/footer/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    SidebarComponent,
-    FooterComponent
+    FooterComponent,
+    SidenavComponent,
+    SidenavListComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    MatSidenavModule,
+    MaterialModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
