@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
+import { HomeModel } from './model/home.model';
+import { HomeService } from './services/home.service';
 
 @Component({
   selector: 'app-home',
@@ -8,12 +9,25 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private translate: TranslateService) { }
+  todo: string;
+
+  constructor(
+    private homeService: HomeService
+  ) { }
 
   ngOnInit(): void {
+    this.getTodos(1);
   }
 
-  public temQueSerTrue(): boolean {
+  private getTodos(id: number): void {
+    this.homeService.get({ id: id }).subscribe(res => {
+      this.todo = (res as HomeModel).title
+    }, err => {
+      console.log(err);
+    });
+  }
+
+  public temQueSerTrzue(): boolean {
     return true;
   }
 

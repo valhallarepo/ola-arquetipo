@@ -1,11 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { httpLoaderFactory } from './http-loader-factory';
+import { httpLoaderFactory } from '../core/http-loader-factory';
+import { MaterialModule } from '../core/material.module';
 
 @NgModule({
     declarations: [],
     imports: [
+        MaterialModule,
         TranslateModule.forChild({
             loader: {
                 provide: TranslateLoader,
@@ -15,7 +17,7 @@ import { httpLoaderFactory } from './http-loader-factory';
             isolate: false
         }),
     ],
-    exports: [TranslateModule],
+    exports: [MaterialModule, TranslateModule],
 })
 export class SharedModule {
 
