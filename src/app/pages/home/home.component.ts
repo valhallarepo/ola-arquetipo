@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  public temQueSerTrzue(): boolean {
+  public temQueSerTrue(): boolean {
     return true;
   }
 
