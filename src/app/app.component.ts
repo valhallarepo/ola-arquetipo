@@ -8,9 +8,6 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class AppComponent {
 
-  showFiller = false;
-  title = 'ola-arquetipo';
-
   constructor(public translate: TranslateService) {
 
     translate.addLangs(['pt-br', 'en', 'es']);

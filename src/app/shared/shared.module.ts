@@ -17,7 +17,7 @@ import { MaterialModule } from '../core/material.module';
             isolate: false
         }),
     ],
-    exports: [MaterialModule, TranslateModule],
+    exports: [MaterialModule, TranslateModule]
 })
 export class SharedModule {
 
