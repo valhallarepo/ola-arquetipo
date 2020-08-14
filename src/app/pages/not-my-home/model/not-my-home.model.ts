@@ -1,4 +1,4 @@
-import { BaseModel } from 'src/app/core/model/base.model';
+import { BaseModel } from '../../../core/model/base.model';
 
 export class NotMyHomeModel extends BaseModel {
     userId: number;

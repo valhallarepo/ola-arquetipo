@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HomeModel } from './model/home.model';
 import { HomeService } from './services/home.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -19,16 +20,8 @@ export class HomeComponent implements OnInit {
     this.getTodos(1);
   }
 
-  private getTodos(id: number): void {
-    this.homeService.get({ id: id }).subscribe(res => {
-      this.todo = (res as HomeModel).title
-    }, err => {
-      console.log(err);
-    });
-  }
-
-  public temQueSerTrue(): boolean {
-    return true;
+  public getTodos(id: number): Observable<any> {
+    return this.homeService.get({ id: id });
   }
 
 }

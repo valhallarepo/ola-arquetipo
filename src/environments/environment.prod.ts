@@ -1,4 +1,5 @@
 export const environment = {
   production: true,
-  API_SERVER: 'http://dummy.restapiexample.com/api/v1/'
+  unitTest: false,
+  API_SERVER: 'https://jsonplaceholder.typicode.com'
 };

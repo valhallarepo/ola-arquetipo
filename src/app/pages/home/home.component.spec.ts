@@ -2,8 +2,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { HomeComponent } from './home.component';
 
-
 describe('HomeComponent', () => {
+
   let component: HomeComponent;
   let fixture: ComponentFixture<HomeComponent>;
 
@@ -11,8 +11,7 @@ describe('HomeComponent', () => {
     TestBed.configureTestingModule({
       imports: [HttpClientModule],
       declarations: [HomeComponent]
-    })
-      .compileComponents();
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -24,5 +23,20 @@ describe('HomeComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  const example = {
+    "userId": 1,
+    "id": 1,
+    "title": "delectus aut autem",
+    "completed": false
+  };
+
+  it('#getObservableValue should return value from observable',
+    (done: DoneFn) => {
+      component.getTodos(1).subscribe(value => {
+        expect(value[0]).toEqual(example);
+        done();
+      });
+    });
 
 });

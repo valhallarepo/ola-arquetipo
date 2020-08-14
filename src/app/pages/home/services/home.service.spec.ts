@@ -21,13 +21,11 @@ describe('HomeService', () => {
       })
   );
 
-  it('expects service to fetch data with proper sorting',
+  it('expects service to fetch some data',
     inject([HttpTestingController, HomeService],
       (httpMock: HttpTestingController, service: HomeService) => {
 
         httpMockInstance = httpMock;
-
-        const params = { id: 1 };
 
         const data = {
           "userId": 1,
@@ -37,12 +35,12 @@ describe('HomeService', () => {
         };
 
         // We call the service
-        service.get(params).subscribe(res => {
+        service.get({ id: 1 }).subscribe(res => {
           expect(res).toEqual(data);
         });
 
         // We set the expectations for the HttpClient mock
-        const req = httpMock.expectOne(`${service.getServerAPI()}/${params.id}`);
+        const req = httpMock.expectOne(`${service.getServerURL()}`);
         expect(req.request.method).toEqual('GET');
         // Then we set the fake data to be returned by the mock
         req.flush(data);

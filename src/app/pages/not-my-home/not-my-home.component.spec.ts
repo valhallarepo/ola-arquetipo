@@ -2,7 +2,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NotMyHomeComponent } from './not-my-home.component';
 
-
 describe('NotMyHomeComponent', () => {
   let component: NotMyHomeComponent;
   let fixture: ComponentFixture<NotMyHomeComponent>;
@@ -11,8 +10,7 @@ describe('NotMyHomeComponent', () => {
     TestBed.configureTestingModule({
       imports: [HttpClientModule],
       declarations: [NotMyHomeComponent]
-    })
-      .compileComponents();
+    }).compileComponents();
   }));
 
   beforeEach(() => {

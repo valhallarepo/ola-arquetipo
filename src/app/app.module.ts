@@ -21,9 +21,11 @@ import { SharedModule } from './shared/shared.module';
     SidenavListComponent
   ],
   imports: [
+    BrowserAnimationsModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    SharedModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -31,9 +33,7 @@ import { SharedModule } from './shared/shared.module';
         deps: [HttpClient]
       },
       isolate: false
-    }),
-    SharedModule.forRoot(),
-    BrowserAnimationsModule,
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

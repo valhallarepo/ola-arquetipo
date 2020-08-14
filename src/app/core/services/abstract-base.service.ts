@@ -1,28 +1,17 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
 import { environment } from 'src/environments/environment';
+import { BaseModel } from '../model/base.model';
+import { IBaseService } from './ibase.service';
 
-export abstract class AbstractBaseService {
+export abstract class AbstractBaseService implements IBaseService {
 
   private baseResource: string;
   private baseHttpClient: HttpClient;
 
-  public request = {
-    get(base: string, uri: string, options: any): Observable<any> {
-      return null;
-    }, api: {
-      get(uri: string, options: any): Observable<any> {
-        return this.request.get(environment.API_SERVER, uri, options);
-      }
-    }
-  };
-
   constructor(resource: string, httpClient: HttpClient) {
     this.baseResource = resource;
     this.baseHttpClient = httpClient;
-    this.request.get = (base: string, uri: string, options: any): Observable<any> => {
-      return this.baseHttpClient.get(`${base}${uri}`, options);
-    };
   }
 
   getResource(): string {
@@ -37,10 +26,6 @@ export abstract class AbstractBaseService {
     return `${environment.API_SERVER}`;
   }
 
-  getServerAPI(): string {
-    return `${environment.API_SERVER}/${this.baseResource}`;
-  }
-
   getHttpHeaderOptionToken(): any {
     const httpOptions = {
       headers: new HttpHeaders({
@@ -49,5 +34,12 @@ export abstract class AbstractBaseService {
     };
     return httpOptions;
   }
+
+
+  abstract get(data: BaseModel): Observable<any>;
+  abstract all(data?: BaseModel): Observable<Array<any>>;
+  abstract save(data: BaseModel): Observable<any>;
+  abstract patch(id: number | string, data: any): Observable<any>;
+  abstract remove(data: BaseModel): Observable<any>;
 
 }
