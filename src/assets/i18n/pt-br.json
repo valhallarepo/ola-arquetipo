@@ -1,17 +1,23 @@
 {
-  "APP": {
-    "SIDEBAR": {
-      "TITLES": {
-        "HOME": "Página Inicial",
-        "NOT_MY_HOME": "Não é a Página Inicial"
-      }
+  "SIDEBAR": {
+    "TITLES": {
+      "HOME": "Página Inicial",
+      "NOT_MY_HOME": "Tela com Grid"
+    }
+  },
+  "PAGES": {
+    "HOME": {
+      "TITLE": "Esta é a Página Inicial!"
     },
-    "PAGES": {
-      "HOME": {
-        "TITLE": "Esta é a Página Inicial!"
-      },
-      "NOT_MY_HOME": {
-        "TITLE": "Esta não é a Página Inicial!"
+    "NOT_MY_HOME": {
+      "TITLE": "Esta não é a Página Inicial!",
+      "TABLE": {
+        "COLUMNS": {
+          "USER_ID": "Id do Usuário",
+          "POST_ID": "Id da Postagem",
+          "POST_TITLE": "Título da Postagem",
+          "POST_CONTENT": "Conteúdo da Postagem"
+        }
       }
     }
   }

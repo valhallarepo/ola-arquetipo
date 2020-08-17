@@ -1,18 +1,7 @@
 <mat-toolbar color="primary">
-    <mat-toolbar-row>
-        <button mat-icon-button class="example-icon" (click)="sidenavRef.toggle()">
-            <mat-icon>menu</mat-icon>
-        </button>
+    <button mat-icon-button class="example-icon" (click)="sidenavRef.toggle()">
+        <mat-icon>menu</mat-icon>
+    </button>
 
-        <span class="spacing">header works!</span>
-
-        <form [formGroup]="form">
-            <mat-radio-group formControlName="colorTheme">
-                <mat-radio-button class="spacing" value="theme-default">Default</mat-radio-button>
-                <mat-radio-button class="spacing" value="theme-yellow-dark">Yellow Dark</mat-radio-button>
-                <mat-radio-button class="spacing" value="theme-blue-gray-dark">Blue Gray Dark</mat-radio-button>
-                <mat-radio-button class="spacing" value="theme-purple-dark">Purple Dark</mat-radio-button>
-            </mat-radio-group>
-        </form>
-    </mat-toolbar-row>
+    <span class="spacing">header works!</span>
 </mat-toolbar>

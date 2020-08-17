@@ -39,8 +39,8 @@ $theme: mat-light-theme($default-primary-palette, $default-accent-palette, $defa
 // -----------------------------------------------------------------------------------------------------
 
 // Define the primary, accent and warn palettes
-$yellow-dark-theme-primary-palette: mat-palette($mat-blue-grey);
-$yellow-dark-theme-accent-palette: mat-palette($mat-amber, A200, A100, A400);
+$yellow-dark-theme-primary-palette: mat-palette($mat-amber);
+$yellow-dark-theme-accent-palette: mat-palette($mat-blue-grey, A200, A100, A400);
 $yellow-dark-theme-warn-palette: mat-palette($mat-red);
 
 // Create the Material theme object
@@ -55,41 +55,41 @@ $yellow-dark-theme: mat-dark-theme($yellow-dark-theme-primary-palette, $yellow-d
 }
 
 // -----------------------------------------------------------------------------------------------------
-// @ Define a blue-gray dark theme
+// @ Define a blue dark theme
 // -----------------------------------------------------------------------------------------------------
 
 // Define the primary, accent and warn palettes
-$blue-gray-dark-theme-primary-palette: mat-palette($mat-blue);
-$blue-gray-dark-theme-accent-palette: mat-palette($mat-blue-gray, A200, A100, A400);
-$blue-gray-dark-theme-warn-palette: mat-palette($mat-red);
+$blue-dark-theme-primary-palette: mat-palette($mat-blue);
+$blue-dark-theme-accent-palette: mat-palette($mat-blue-gray, A200, A100, A400);
+$blue-dark-theme-warn-palette: mat-palette($mat-red);
 
 // Create the Material theme object
-$blue-gray-dark-theme: mat-dark-theme($blue-gray-dark-theme-primary-palette, $blue-gray-dark-theme-accent-palette, $blue-gray-dark-theme-warn-palette);
+$blue-dark-theme: mat-dark-theme($blue-dark-theme-primary-palette, $blue-dark-theme-accent-palette, $blue-dark-theme-warn-palette);
 
-// Add ".theme-blue-gray-dark" class to the body to activate this theme.
+// Add ".theme-blue-dark" class to the body to activate this theme.
 // Class name must start with "theme-" !!!
-.theme-blue-gray-dark {
+.theme-blue-dark {
 
     // Generate the Angular Material theme
-    @include angular-material-theme($blue-gray-dark-theme);
+    @include angular-material-theme($blue-dark-theme);
 }
 
 // -----------------------------------------------------------------------------------------------------
-// @ Define a purple dark theme
+// @ Define a pink dark theme
 // -----------------------------------------------------------------------------------------------------
 
 // Define the primary, accent and warn palettes
-$purple-dark-theme-primary-palette: mat-palette($mat-deep-purple);
-$purple-dark-theme-accent-palette: mat-palette($mat-purple, A200, A100, A400);
-$purple-dark-theme-warn-palette: mat-palette($mat-red);
+$pink-dark-theme-primary-palette: mat-palette($mat-pink);
+$pink-dark-theme-accent-palette: mat-palette($mat-pink, A200, A100, A400);
+$pink-dark-theme-warn-palette: mat-palette($mat-red);
 
 // Create the Material theme object
-$purple-dark-theme: mat-dark-theme($purple-dark-theme-primary-palette, $purple-dark-theme-accent-palette, $purple-dark-theme-warn-palette);
+$pink-dark-theme: mat-dark-theme($pink-dark-theme-primary-palette, $pink-dark-theme-accent-palette, $pink-dark-theme-warn-palette);
 
-// Add ".theme-purple-dark" class to the body to activate this theme.
+// Add ".theme-pink-dark" class to the body to activate this theme.
 // Class name must start with "theme-" !!!
-.theme-purple-dark {
+.theme-pink-dark {
 
     // Generate the Angular Material theme
-    @include angular-material-theme($purple-dark-theme);
+    @include angular-material-theme($pink-dark-theme);
 }

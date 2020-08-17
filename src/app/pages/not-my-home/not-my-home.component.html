@@ -1,21 +1,21 @@
 <mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
     <ng-container matColumnDef="userId">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Id do Usuário </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'PAGES.NOT_MY_HOME.TABLE.COLUMNS.USER_ID' | translate }} </mat-header-cell>
         <mat-cell *matCellDef="let element">{{element.userId}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="id">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Id da Postagem </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'PAGES.NOT_MY_HOME.TABLE.COLUMNS.POST_ID' | translate }} </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="title">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Título da Postagem </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'PAGES.NOT_MY_HOME.TABLE.COLUMNS.POST_TITLE' | translate }} </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.title}} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="body">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Conteúdo da Postagem </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'PAGES.NOT_MY_HOME.TABLE.COLUMNS.POST_TITLE' | translate }} </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.body}} </mat-cell>
     </ng-container>
 
