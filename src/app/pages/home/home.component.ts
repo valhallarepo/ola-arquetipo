@@ -21,7 +21,9 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getTodos(1);
+    this.getTodos(1).subscribe(res => {
+      this.todo = res.title;
+    });
     this.createForm();
   }
 
