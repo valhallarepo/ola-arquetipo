@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { takeUntilDestroy } from 'src/app/core/take-until-destroy';
 import { ThemeService } from './core/services/theme.service';
 
 @Component({
@@ -7,7 +8,7 @@ import { ThemeService } from './core/services/theme.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
 
   globalTheme: string;
 
@@ -22,9 +23,14 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.themeService.globalThemeObservable.subscribe(theme => {
-      this.globalTheme = theme;
-    });
+    this.themeService.globalThemeObservable
+      .pipe(takeUntilDestroy(this))
+      .subscribe(theme => {
+        this.globalTheme = theme;
+      });
+  }
+
+  ngOnDestroy(): void {
   }
 
 }
