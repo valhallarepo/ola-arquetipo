@@ -1,6 +1,5 @@
 import { AfterContentInit, Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { Observable } from 'rxjs';
 import { ThemeService } from 'src/app/core/services/theme.service';
 
 @Component({
@@ -14,13 +13,10 @@ export class HeaderComponent implements OnInit, AfterContentInit {
 
   form: FormGroup;
 
-  theme: Observable<string>;
-
   constructor(private themeService: ThemeService,
     private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
-    this.theme = this.themeService.theme;
     this.createForm();
     this.changeThemeSubscription();
   }
