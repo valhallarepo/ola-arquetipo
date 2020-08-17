@@ -21,9 +21,9 @@ import { SharedModule } from './shared/shared.module';
     SidenavListComponent
   ],
   imports: [
+    AppRoutingModule,
     BrowserAnimationsModule,
     BrowserModule,
-    AppRoutingModule,
     HttpClientModule,
     SharedModule.forRoot(),
     TranslateModule.forRoot({

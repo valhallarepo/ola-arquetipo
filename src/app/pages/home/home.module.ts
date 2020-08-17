@@ -1,10 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { InputValidatorOleLibModule } from 'input-validator-ole-lib';
+import { SharedModule } from 'src/app/shared/shared.module';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
-import { SharedModule } from 'src/app/shared/shared.module';
-import { InputValidatorOleLibModule } from 'input-validator-ole-lib';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [HomeComponent],
@@ -12,9 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     HomeRoutingModule,
     SharedModule,
-    InputValidatorOleLibModule,
-    FormsModule,
-    ReactiveFormsModule
+    InputValidatorOleLibModule
   ]
 })
 export class HomeModule { }
