@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HomeModel } from './model/home.model';
-import { HomeService } from './services/home.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
+import { HomeService } from './services/home.service';
 
 @Component({
   selector: 'app-home',
@@ -16,8 +15,7 @@ export class HomeComponent implements OnInit {
   public exampleForm: FormGroup;
 
   constructor(
-    private homeService: HomeService,
-    private fb: FormBuilder
+    private homeService: HomeService
   ) { }
 
   ngOnInit(): void {
@@ -28,12 +26,12 @@ export class HomeComponent implements OnInit {
   }
 
   createForm() {
-    this.exampleForm = this.fb.group({
-      nome: ['', [Validators.required]],
-      sobrenome: '',
-      endereco: ['', [Validators.required]],
-      cidade: '',
-      estado: ''
+    this.exampleForm = new FormGroup({
+      nome: new FormControl('', Validators.required),
+      sobrenome: new FormControl(),
+      endereco: new FormControl('', Validators.required),
+      cidade: new FormControl(),
+      estado: new FormControl()
     });
   }
 
