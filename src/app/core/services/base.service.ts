@@ -5,8 +5,11 @@ import { AbstractBaseService } from './abstract-base.service';
 
 export class BaseService<T extends BaseModel> extends AbstractBaseService<T> {
 
+  private URI: string;
+
   constructor(resource: string, http: HttpClient) {
     super(resource, http);
+    this.URI = `${this.getServerURL()}/${this.getResource()}`;
   }
 
   /**
@@ -15,7 +18,7 @@ export class BaseService<T extends BaseModel> extends AbstractBaseService<T> {
    */
   get(data: T): Observable<T> {
     const options = this.getHttpHeaderOptionToken();
-    return this.getHttp().get<T>(`${this.getServerURL()}/${data.id}`, options as Object);
+    return this.getHttp().get<T>(`${this.URI}/${data.id}`, options as Object);
   }
 
   /**
@@ -34,7 +37,7 @@ export class BaseService<T extends BaseModel> extends AbstractBaseService<T> {
       });
     }
 
-    return this.getHttp().get<Array<T>>(`${this.getServerURL()}`, options as Object);
+    return this.getHttp().get<Array<T>>(`${this.URI}`, options as Object);
   }
 
   /**
@@ -50,11 +53,11 @@ export class BaseService<T extends BaseModel> extends AbstractBaseService<T> {
 
     // POST
     if (!data.id) {
-      return this.getHttp().post<T>(this.getServerURL(), data, options as Object);
+      return this.getHttp().post<T>(this.URI, data, options as Object);
     }
 
     // PUT
-    return this.getHttp().put<T>(`${this.getServerURL()}/${data.id}`, data, options as Object);
+    return this.getHttp().put<T>(`${this.URI}/${data.id}`, data, options as Object);
   }
 
   /**
@@ -74,19 +77,19 @@ export class BaseService<T extends BaseModel> extends AbstractBaseService<T> {
       });
     }
 
-    return this.getHttp().patch<T>(`${this.getServerURL()}/${id}`, data, options as Object);
+    return this.getHttp().patch<T>(`${this.URI}/${id}`, data, options as Object);
   }
 
   /**
    * Implementação do verbo DELETE para a deleção de um registro.
    * @param data 
    */
-  remove(data: T): Observable<T> {
+  remove(id: number | string): Observable<T> {
     const options = this.getHttpHeaderOptionToken();
     options.params = new HttpParams();
 
-    if (data.id) {
-      return this.getHttp().delete<T>(`${this.getServerURL()}/${data.id}`, options as Object);
+    if (id) {
+      return this.getHttp().delete<T>(`${this.URI}/${id}`, options as Object);
     }
 
     return;

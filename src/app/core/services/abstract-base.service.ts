@@ -7,7 +7,7 @@ export interface IBaseService<T> {
   all(data?: T): Observable<Array<T>>;
   save(data: T): Observable<T>;
   patch(id: number | string, data: T): Observable<T>;
-  remove(data: T): Observable<T>;
+  remove(data: number | string): Observable<T>;
 }
 
 export abstract class AbstractBaseService<T> implements IBaseService<T> {
@@ -45,6 +45,6 @@ export abstract class AbstractBaseService<T> implements IBaseService<T> {
   abstract all(data?: T): Observable<Array<T>>;
   abstract save(data: T): Observable<T>;
   abstract patch(id: number | string, data: T): Observable<T>;
-  abstract remove(data: T): Observable<T>;
+  abstract remove(id: number | string): Observable<T>;
 
 }
