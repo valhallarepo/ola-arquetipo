@@ -5,8 +5,8 @@ import { AbstractBaseService } from './abstract-base.service';
 
 export class BaseService<T extends BaseModel> extends AbstractBaseService<T> {
 
-  constructor(resource: string, httpClient: HttpClient) {
-    super(resource, httpClient);
+  constructor(resource: string, http: HttpClient) {
+    super(resource, http);
   }
 
   /**

@@ -15,9 +15,9 @@ export abstract class AbstractBaseService<T> implements IBaseService<T> {
   private baseResource: string;
   private baseHttp: HttpClient;
 
-  constructor(resource: string, httpClient: HttpClient) {
+  constructor(resource: string, http: HttpClient) {
     this.baseResource = resource;
-    this.baseHttp = httpClient;
+    this.baseHttp = http;
   }
 
   getResource(): string {

@@ -8,10 +8,8 @@ import { HomeModel } from '../../home/model/home.model';
 })
 export class HomeService extends BaseService<HomeModel> {
 
-  constructor(
-    public httpClient: HttpClient
-  ) {
-    super('todos', httpClient);
+  constructor(http: HttpClient) {
+    super('todos', http);
   }
 
 }
