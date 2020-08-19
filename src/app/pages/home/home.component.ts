@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { takeUntilDestroy } from 'src/app/core/take-until-destroy';
+import { HomeModel } from './model/home.model';
 import { HomeService } from './services/home.service';
 
 @Component({
@@ -43,7 +44,9 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   public getTodos(id: number): Observable<any> {
-    return this.homeService.get({ id: id });
+    const params = new HomeModel();
+    params.id = id;
+    return this.homeService.get(params);
   }
 
 }

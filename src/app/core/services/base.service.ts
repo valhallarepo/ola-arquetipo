@@ -1,26 +1,20 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
-import { environment } from 'src/environments/environment';
-import { BaseModel } from '../model/base.model';
+import { BaseModel } from '../../core/model/base.model';
 import { AbstractBaseService } from './abstract-base.service';
 
-export class BaseService extends AbstractBaseService {
-
-  private URI: string;
-  private unitTest: boolean;
+export class BaseService<T extends BaseModel> extends AbstractBaseService<T> {
 
   constructor(resource: string, httpClient: HttpClient) {
     super(resource, httpClient);
-    this.unitTest = environment.unitTest;
-    this.URI = (`${this.getServerURL()}` + (this.unitTest ? '' : `/${this.getResource()}`));
   }
 
-  get(data: BaseModel): Observable<any> {
+  get(data: T): Observable<T> {
     const options = this.getHttpHeaderOptionToken();
-    return this.getHttpClient().get<any>(`${this.URI}` + (this.unitTest ? '' : `/${data.id}`), options);
+    return this.getHttp().get<T>(`${this.getServerURL()}/${data.id}`, options as Object);
   }
 
-  all(data?: BaseModel): Observable<any> {
+  all(data?: T): Observable<Array<T>> {
     const options = this.getHttpHeaderOptionToken();
 
     if (data) {
@@ -32,23 +26,23 @@ export class BaseService extends AbstractBaseService {
       });
     }
 
-    return this.getHttpClient().get<any>(`${this.URI}`, options);
+    return this.getHttp().get<Array<T>>(`${this.getServerURL()}`, options as Object);
   }
 
-  save(data: BaseModel): Observable<any> {
+  save(data: T): Observable<T> {
     const options = this.getHttpHeaderOptionToken();
     options.params = new HttpParams();
 
     // New
     if (!data.id) {
-      return this.getHttpClient().post<any>(this.URI, data, options);
+      return this.getHttp().post<T>(this.getServerURL(), data, options as Object);
     }
 
     // Update
-    return this.getHttpClient().put<any>(`${this.URI}` + (this.unitTest ? '' : `/${data.id}`), data, options);
+    return this.getHttp().put<T>(`${this.getServerURL()}/${data.id}`, data, options as Object);
   }
 
-  patch(id: number, data: BaseModel): Observable<any> {
+  patch(id: number, data: T): Observable<T> {
     const options = this.getHttpHeaderOptionToken();
     options.params = new HttpParams();
 
@@ -62,19 +56,19 @@ export class BaseService extends AbstractBaseService {
 
     // New
     if (!id) {
-      return this.getHttpClient().patch<any>(`${this.URI}`, data, options);
+      return this.getHttp().patch<T>(`${this.getServerURL()}`, data, options as Object);
     }
 
     // Update
-    return this.getHttpClient().patch<any>(`${this.URI}` + (this.unitTest ? '' : `/${id}`), data, options);
+    return this.getHttp().patch<T>(`${this.getServerURL()}/${id}`, data, options as Object);
   }
 
-  remove(data: BaseModel): Observable<any> {
+  remove(data: T): Observable<T> {
     const options = this.getHttpHeaderOptionToken();
     options.params = new HttpParams();
 
     if (data.id) {
-      return this.getHttpClient().delete<any>(`${this.URI}/${data.id}`, options);
+      return this.getHttp().delete<T>(`${this.getServerURL()}/${data.id}`, options as Object);
     }
 
     return;
