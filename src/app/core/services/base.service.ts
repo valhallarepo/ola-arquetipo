@@ -9,11 +9,19 @@ export class BaseService<T extends BaseModel> extends AbstractBaseService<T> {
     super(resource, httpClient);
   }
 
+  /**
+   * Implementação do verbo GET para a recuperação de registro único.
+   * @param data 
+   */
   get(data: T): Observable<T> {
     const options = this.getHttpHeaderOptionToken();
     return this.getHttp().get<T>(`${this.getServerURL()}/${data.id}`, options as Object);
   }
 
+  /**
+   * Implementação do verbo GET para a recuperação de múltiplos registros.
+   * @param data 
+   */
   all(data?: T): Observable<Array<T>> {
     const options = this.getHttpHeaderOptionToken();
 
@@ -29,19 +37,31 @@ export class BaseService<T extends BaseModel> extends AbstractBaseService<T> {
     return this.getHttp().get<Array<T>>(`${this.getServerURL()}`, options as Object);
   }
 
+  /**
+   * Implementação dos verbos POST e PUT.
+   * 
+   * POST: Novo registro, o ID não deve ser submetido na requisição.
+   * PUT:  Atualização completa do registro, o ID deve ser submetido na requisição.
+   * @param data 
+   */
   save(data: T): Observable<T> {
     const options = this.getHttpHeaderOptionToken();
     options.params = new HttpParams();
 
-    // New
+    // POST
     if (!data.id) {
       return this.getHttp().post<T>(this.getServerURL(), data, options as Object);
     }
 
-    // Update
+    // PUT
     return this.getHttp().put<T>(`${this.getServerURL()}/${data.id}`, data, options as Object);
   }
 
+  /**
+   * Implementação do verbo PATCH para atualização parcial do registro, o ID deve ser submetido na requisição.
+   * @param id 
+   * @param data 
+   */
   patch(id: number, data: T): Observable<T> {
     const options = this.getHttpHeaderOptionToken();
     options.params = new HttpParams();
@@ -54,15 +74,13 @@ export class BaseService<T extends BaseModel> extends AbstractBaseService<T> {
       });
     }
 
-    // New
-    if (!id) {
-      return this.getHttp().patch<T>(`${this.getServerURL()}`, data, options as Object);
-    }
-
-    // Update
     return this.getHttp().patch<T>(`${this.getServerURL()}/${id}`, data, options as Object);
   }
 
+  /**
+   * Implementação do verbo DELETE para a deleção de um registro.
+   * @param data 
+   */
   remove(data: T): Observable<T> {
     const options = this.getHttpHeaderOptionToken();
     options.params = new HttpParams();
