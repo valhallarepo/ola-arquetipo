@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { takeUntilDestroy } from 'src/app/core/take-until-destroy';
-import { ThemeService } from './core/services/theme.service';
+import { ThemeProvider } from './core/theme.provider';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +13,7 @@ export class AppComponent implements OnInit, OnDestroy {
   globalTheme: string;
 
   constructor(public translate: TranslateService,
-    private themeService: ThemeService) {
+    private themeProvider: ThemeProvider) {
 
     translate.addLangs(['pt-br', 'en', 'es']);
     translate.setDefaultLang('pt-br');
@@ -23,7 +23,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.themeService.globalThemeObservable
+    this.themeProvider.globalThemeObservable
       .pipe(takeUntilDestroy(this))
       .subscribe(theme => {
         this.globalTheme = theme;
