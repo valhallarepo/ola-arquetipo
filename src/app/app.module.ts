@@ -11,6 +11,7 @@ import { HeaderComponent } from './core/template/header/header.component';
 import { SidenavListComponent } from './core/template/sidenav/components/sidenav-list/sidenav-list.component';
 import { SidenavComponent } from './core/template/sidenav/sidenav.component';
 import { SharedModule } from './shared/shared.module';
+import { HomeComponent } from './pages/home/home.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { SharedModule } from './shared/shared.module';
     HeaderComponent,
     FooterComponent,
     SidenavComponent,
-    SidenavListComponent
+    SidenavListComponent,
+    HomeComponent
   ],
   imports: [
     AppRoutingModule,
