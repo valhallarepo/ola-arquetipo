@@ -1,3 +1,3 @@
-export class BaseModel {
+export abstract class BaseModel {
   id: number;
 }
