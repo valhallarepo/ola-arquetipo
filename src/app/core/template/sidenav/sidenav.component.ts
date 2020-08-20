@@ -1,6 +1,6 @@
 import { MediaMatcher } from '@angular/cdk/layout';
 import { AfterViewInit, ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { MatRadioChange } from '@angular/material/radio';
 import { AppConfig } from '../../app.config';
 import { ThemeProvider } from '../../theme.provider';
@@ -18,12 +18,12 @@ export class SidenavComponent implements OnInit, AfterViewInit {
 
   constructor(
     private changeDetectorRef: ChangeDetectorRef,
-    private formBuider: FormBuilder,
     private media: MediaMatcher,
     private themeProvider: ThemeProvider) {
     this.mobileQuery = this.media.matchMedia('(max-width: 768px)');
     this.mobileQuery.addListener(() => this.changeDetectorRef.detectChanges());
   }
+
   ngOnInit(): void {
     this.createForm();
   }
@@ -36,7 +36,7 @@ export class SidenavComponent implements OnInit, AfterViewInit {
   }
 
   private createForm() {
-    this.form = this.formBuider.group({
+    this.form = new FormGroup({
       colorTheme: new FormControl()
     });
   }

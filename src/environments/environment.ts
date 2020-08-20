@@ -4,7 +4,6 @@
 
 export const environment = {
   production: false,
-  unitTest: false,
   API_SERVER: 'https://jsonplaceholder.typicode.com'
 };
 
